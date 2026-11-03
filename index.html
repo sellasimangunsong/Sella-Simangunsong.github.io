@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,14 +156,130 @@ footer {padding:27px 0 38px;color:var(--muted);font-size:.85rem}
   font-weight: 600;
 }
 
-.linkedin-btn svg {
-  fill: white;
-}
-
+.linkedin-btn svg {fill: white}
 .linkedin-btn:hover {
   background-color: #004182;
   border-color: #004182;
 }
+
+/* WORK ACTIVITY GALLERY */
+.gallery-section {background:#fff}
+.gallery-intro {max-width:720px}
+.gallery-filters {display:flex;flex-wrap:wrap;gap:9px;margin:22px 0}
+.gallery-filter {
+  border:1px solid #dfe3f4;background:#fff;color:var(--muted);
+  border-radius:999px;padding:9px 15px;font-weight:700;cursor:pointer;
+  font-size:.82rem;transition:.2s
+}
+.gallery-filter:hover,.gallery-filter.active {
+  background:var(--accent);border-color:var(--accent);color:#fff
+}
+.gallery-grid {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px
+}
+.gallery-card {
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  background:#fff;box-shadow:0 8px 28px #19234608;cursor:pointer;
+  transition:transform .2s,box-shadow .2s
+}
+.gallery-card:hover {transform:translateY(-4px);box-shadow:0 14px 32px #19234615}
+.gallery-image {
+  width:100%;
+  height:280px;
+  object-fit:contain;
+  display:block;
+  background:#f5f6fa;
+}
+.gallery-placeholder {
+  height:210px;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;color:#5268d9;
+  background:linear-gradient(135deg,#edf0ff,#f7f8ff);font-weight:700
+}
+.gallery-placeholder span {font-size:2rem}
+.gallery-info {padding:16px}
+.gallery-info h3 {font-size:1rem;margin:0 0 6px}
+.gallery-info p {font-size:.85rem;color:var(--muted);margin:0}
+.gallery-category {
+  display:inline-block;margin-bottom:8px;color:var(--accent);
+  font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase
+}
+.gallery-note {margin-top:18px;color:var(--muted);font-size:.85rem}
+.gallery-modal {
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(10,16,32,.92);padding:28px;
+  align-items:center;justify-content:center
+}
+.gallery-modal.open {display:flex}
+.gallery-modal-content {
+  width:min(100%,1000px);max-height:92vh;display:flex;flex-direction:column;
+  align-items:center;position:relative
+}
+.gallery-modal img {
+  max-width:100%;max-height:72vh;object-fit:contain;border-radius:12px
+}
+.gallery-modal-caption {color:#fff;text-align:center;margin-top:14px}
+.gallery-modal-caption h3 {margin:0 0 5px}
+.gallery-modal-caption p {margin:0;color:#d1d7e5}
+.gallery-close {
+  position:absolute;right:0;top:-42px;border:0;background:#fff;color:#172033;
+  border-radius:50%;width:36px;height:36px;font-size:1.35rem;cursor:pointer
+}
+.gallery-empty {
+  grid-column:1/-1;padding:28px;text-align:center;color:var(--muted);
+  border:1px dashed #cbd2e8;border-radius:14px
+}
+@media(max-width:850px) {
+  .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px) {
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-image,.gallery-placeholder{height:220px}
+  .gallery-modal{padding:18px}
+}
+
+/* INTERNSHIP DOCUMENTATION */
+
+.internship-gallery {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.internship-gallery h4 {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.internship-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  width: 100%;
+}
+
+.internship-photo {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: #f5f6fa;
+}
+
+.internship-photo img {
+  width: 100%;
+  height: 75px;
+  object-fit: contain;
+  display: block;
+}
+
+@media(max-width:700px) {
+  .internship-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
 </style>
 </head>
 
@@ -180,6 +295,7 @@ footer {padding:27px 0 38px;color:var(--muted);font-size:.85rem}
 <a href="#projects">Projects</a>
 <a href="#education">Education</a>
 <a href="#skills">Skills</a>
+<a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
@@ -403,48 +519,94 @@ and operational information.
 </div>
 </section>
 
+
 <!-- INTERNSHIP & ORGANIZATION -->
 <section id="internship">
 <div class="wrap">
 <div class="head">
-<div class="eyebrow">05 / Internship & Organization</div>
-<h2>Beyond Professional Experience</h2>
+  <div class="eyebrow">05 / Internship & Organization</div>
+  <h2>Beyond Professional Experience</h2>
 </div>
 
 <div class="grid">
 
-<div class="card">
-<div class="label">INTERNSHIP PROJECT</div>
-<h3>IR & DC – Surya Cipta, Karawang</h3>
-<p class="meta">Internship</p>
-<p>
-Participated in a project to develop a battery pack
-as the power source for an electric bicycle.
-The project provided practical exposure to battery-pack
-development and electric mobility applications.
-</p>
-<div class="tags">
-<span class="tag">Battery Pack</span>
-<span class="tag">Electric Bicycle</span>
-<span class="tag">Project Development</span>
+  <!-- ORGANIZATION CARD -->
+  <div class="card">
+    <div class="label">ORGANIZATIONAL EXPERIENCE</div>
+    <h3>Majelis Permusyawaratan Anggota</h3>
+    <p class="meta">Secretary · One Term</p>
+    <p>
+      Served as secretary for one term, supporting
+      administrative coordination, meeting documentation,
+      correspondence, and organizational records.
+    </p>
+    <div class="tags">
+      <span class="tag">Administration</span>
+      <span class="tag">Documentation</span>
+      <span class="tag">Coordination</span>
+    </div>
+  </div>
+
+  <!-- INTERNSHIP CARD -->
+  <div class="card">
+    <div class="label">INTERNSHIP PROJECT</div>
+    <h3>IR & DC – Surya Cipta, Karawang</h3>
+    <p class="meta">Internship</p>
+    <p>
+      Participated in a project to develop a battery pack
+      as the power source for an electric bicycle.
+      The project provided practical exposure to battery-pack
+      development and electric mobility applications.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Battery Pack</span>
+      <span class="tag">Electric Bicycle</span>
+      <span class="tag">Project Development</span>
+    </div>
+
+    <!-- INTERNSHIP DOCUMENTATION -->
+    <div class="internship-gallery">
+      <h4>Internship Documentation</h4>
+
+      <div class="internship-gallery-grid">
+
+        <div class="internship-photo">
+          <img src="images/internship-1.jpg" alt="Battery Pack Development">
+        </div>
+
+        <div class="internship-photo">
+          <img src="images/internship-2.jpg" alt="Battery Pack Assembly">
+        </div>
+
+        <div class="internship-photo">
+          <img src="images/internship-4.jpg" alt="Battery Pack Development">
+        </div>
+
+        <div class="internship-photo">
+          <img src="images/internship-5.jpg" alt="Battery Pack Development">
+        </div>
+
+        <div class="internship-photo">
+          <img src="images/internship-6.jpg" alt="Battery Pack Development">
+        </div>
+
+        <div class="internship-photo">
+          <img src="images/internship-3.jpg" alt="Electric Bicycle Battery">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
+</div>
+</section>
+
+
+  </div>
 </div>
 
-<div class="card">
-<div class="label">ORGANIZATIONAL EXPERIENCE</div>
-<h3>Majelis Permusyawaratan Anggota</h3>
-<p class="meta">Secretary · One Term</p>
-<p>
-Served as secretary for one term, supporting
-administrative coordination, meeting documentation,
-correspondence, and organizational records.
-</p>
-<div class="tags">
-<span class="tag">Administration</span>
-<span class="tag">Documentation</span>
-<span class="tag">Coordination</span>
-</div>
-</div>
 
 </div>
 </div>
@@ -513,16 +675,152 @@ correspondence, and organizational records.
 </div>
 </section>
 
+
+<!-- WORK ACTIVITY GALLERY -->
+<section id="gallery" class="gallery-section">
+  <div class="wrap">
+    <div class="head gallery-intro">
+      <div class="eyebrow">08 / Work Activity Gallery</div>
+      <h2>Behind the Projects.</h2>
+      <p>A visual collection of field activities, system installations, troubleshooting, testing, and technical work.</p>
+    </div>
+
+    <div class="gallery-filters" role="group" aria-label="Filter gallery activities">
+      <button class="gallery-filter active" type="button" data-filter="all">All Activities</button>
+      <button class="gallery-filter" type="button" data-filter="vsat">VSAT & Field Work</button>
+      <button class="gallery-filter" type="button" data-filter="network">Network & Monitoring</button>
+      <button class="gallery-filter" type="button" data-filter="rf">RF & Equipment</button>
+      <button class="gallery-filter" type="button" data-filter="documentation">Testing & Documentation</button>
+    </div>
+
+    <div class="gallery-grid" id="workGallery">
+      <!-- Replace each placeholder with your own photo -->
+      <article class="gallery-card" data-category="vsat" tabindex="0"
+        data-title="VSAT Site Installation"
+        data-description="Field activity involving VSAT equipment installation and initial system checks.">
+
+        <img class="gallery-image"
+         src="images/vsat-installation.jpg"
+         alt="VSAT Site Installation">
+
+        <div class="gallery-info"><span class="gallery-category">VSAT & Field Work</span><h3>VSAT Site Installation</h3><p>Equipment installation and initial system checks at a remote site.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="vsat" tabindex="0"
+        data-title="Antenna Alignment & Commissioning"
+        data-description="Antenna pointing, signal acquisition, and commissioning activities.">
+
+        <img class="gallery-image"
+         src="images/antenna-alignment.jpg"
+         alt="Antenna Alignment & Commissioning">
+
+        
+        <div class="gallery-info"><span class="gallery-category">VSAT & Field Work</span><h3>Antenna Alignment & Commissioning</h3><p>Antenna pointing, signal acquisition, and commissioning.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="network" tabindex="0"
+        data-title="Network Configuration"
+        data-description="Router, IP addressing, and connectivity configuration during deployment or maintenance.">
+
+        <img class="gallery-image"
+         src="images/network-configuration.jpg"
+         alt="Network Configuration">
+
+        <div class="gallery-info"><span class="gallery-category">Network & Monitoring</span><h3>Network Configuration</h3><p>Router setup, IP addressing, and connectivity checks.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="network" tabindex="0"
+        data-title="NMS & Network Monitoring"
+        data-description="Monitoring network performance and reviewing alarms using operational monitoring platforms.">
+
+         <img class="gallery-image"
+         src="images/nms-monitoring.jpg"
+         alt="NMS & Network Monitoring">
+
+        <div class="gallery-info"><span class="gallery-category">Network & Monitoring</span><h3>NMS & Network Monitoring</h3><p>Reviewing network status, alarms, and performance indicators.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="rf" tabindex="0"
+        data-title="RF Equipment Inspection"
+        data-description="Inspection and troubleshooting of RF distribution equipment and signal paths.">
+
+         <img class="gallery-image"
+         src="images/rf-equipment.jpg"
+         alt="RF Equipment Inspection">
+
+        <div class="gallery-info"><span class="gallery-category">RF & Equipment</span><h3>RF Equipment Inspection</h3><p>Equipment checks and RF signal-path troubleshooting.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="rf" tabindex="0"
+        data-title="BUC / SSPA & Diversity System"
+        data-description="Technical activities involving outdoor RF equipment and site-diversity systems.">
+
+        <img class="gallery-image"
+         src="images/buc-sspa-diversity.jpg"
+         alt="BUC / SSPA & Diversity System">
+      
+        <div class="gallery-info"><span class="gallery-category">RF & Equipment</span><h3>BUC / SSPA & Diversity System</h3><p>Outdoor RF equipment and diversity-system activities.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="documentation" tabindex="0"
+        data-title="System Testing & Verification"
+        data-description="Performing service checks, reviewing test results, and verifying system performance.">
+
+        <img class="gallery-image"
+         src="images/system-testing.jpg"
+         alt="System Testing & Verification">
+
+        <div class="gallery-info"><span class="gallery-category">Testing & Documentation</span><h3>System Testing & Verification</h3><p>Service checks and verification of system performance.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="documentation" tabindex="0"
+        data-title="Troubleshooting & Technical Reporting"
+        data-description="Documenting observations, fault analysis, and follow-up actions for technical issues.">
+
+        <img class="gallery-image"
+         src="images/technical-report.jpg"
+         alt="Troubleshooting & Technical Reporting">
+
+        <div class="gallery-info"><span class="gallery-category">Testing & Documentation</span><h3>Troubleshooting & Technical Reporting</h3><p>Recording findings, analysis, and recommended actions.</p></div>
+      </article>
+
+      <article class="gallery-card" data-category="vsat" tabindex="0"
+        data-title="Remote Site Maintenance"
+        data-description="Remote-site maintenance and coordination to support service availability.">
+
+        <img class="gallery-image"
+         src="images/remote-maintenance.jpg"
+         alt="Remote Site Maintenance">
+
+        <div class="gallery-info"><span class="gallery-category">VSAT & Field Work</span><h3>Remote Site Maintenance</h3><p>Maintenance activities and operational support at field locations.</p></div>
+      </article>
+    </div>
+    <p class="gallery-note">For customer confidentiality, avoid uploading photos that expose site coordinates, IP addresses, credentials, network diagrams, customer names, or restricted equipment details.</p>
+  </div>
+</section>
+
+<!-- IMAGE LIGHTBOX -->
+<div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true" aria-label="Gallery image preview">
+  <div class="gallery-modal-content">
+    <button class="gallery-close" id="galleryClose" type="button" aria-label="Close image preview">&times;</button>
+    <img id="galleryModalImage" src="" alt="">
+    <div class="gallery-modal-caption">
+      <h3 id="galleryModalTitle"></h3>
+      <p id="galleryModalDescription"></p>
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section id="contact">
 <div class="wrap">
 <div class="contact">
-<div class="eyebrow">08 / Contact</div>
+<div class="eyebrow">09 / Contact</div>
 <h2>Let's Connect.</h2>
 <p>
-I'm open to professional opportunities and technical
-discussions in telecommunications, technical support,
-VSAT, and network infrastructure.
+I'm open to professional opportunities and Technical
+discussions in Telecommunications, Technical Support,
+VSAT, and Network Infrastructure.
 </p>
 
 <div class="actions">
