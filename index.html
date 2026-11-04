@@ -171,6 +171,11 @@ footer {padding:27px 0 38px;color:var(--muted);font-size:.85rem}
   border-radius:999px;padding:9px 15px;font-weight:700;cursor:pointer;
   font-size:.82rem;transition:.2s
 }
+
+.gallery-card[hidden] {
+  display: none !important;
+}
+
 .gallery-filter:hover,.gallery-filter.active {
   background:var(--accent);border-color:var(--accent);color:#fff
 }
@@ -237,7 +242,20 @@ footer {padding:27px 0 38px;color:var(--muted);font-size:.85rem}
   .gallery-modal{padding:18px}
 }
 
+
+
 /* INTERNSHIP DOCUMENTATION */
+.internship-card {
+    grid-column: 1 / -1;
+}
+
+.internship-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
 
 .internship-gallery {
   margin-top: 22px;
@@ -251,26 +269,23 @@ footer {padding:27px 0 38px;color:var(--muted);font-size:.85rem}
   color: var(--ink);
 }
 
-.internship-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 7px;
-  width: 100%;
-}
-
 .internship-photo {
-  min-width: 0;
-  overflow: hidden;
-  border-radius: 7px;
-  border: 1px solid var(--line);
-  background: #f5f6fa;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #f5f6fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .internship-photo img {
-  width: 100%;
-  height: 75px;
-  object-fit: contain;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 @media(max-width:700px) {
@@ -282,7 +297,48 @@ footer {padding:27px 0 38px;color:var(--muted);font-size:.85rem}
 
 </style>
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+  const filterButtons = document.querySelectorAll(".gallery-filter");
+  const galleryCards = document.querySelectorAll(".gallery-card");
+
+  filterButtons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+      // Ambil kategori yang dipilih
+      const selectedFilter = this.dataset.filter;
+
+      // Update warna tombol aktif
+      filterButtons.forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      this.classList.add("active");
+
+      // Tampilkan foto sesuai kategori
+      galleryCards.forEach(card => {
+
+        const category = card.dataset.category;
+
+        if (
+          selectedFilter === "all" ||
+          category === selectedFilter
+        ) {
+          card.hidden = false;
+        } else {
+          card.hidden = true;
+        }
+
+      });
+
+    });
+
+  });
+
+});
+</script>
 <body>
 
 <header>
@@ -505,14 +561,12 @@ and operational information.
 <section id="internship">
 <div class="wrap">
 <div class="head">
-  <div class="eyebrow">05 / Internship & Organization</div>
+  <div class="eyebrow">04 / Internship</div>
   <h2>Beyond Professional Experience</h2>
 </div>
 
-<div class="grid">
-
   <!-- INTERNSHIP CARD -->
-  <div class="card">
+  <div class="card intership-card">
     <div class="label">INTERNSHIP PROJECT</div>
     <h3>IR & DC – Surya Cipta, Karawang</h3>
     <p class="meta">Internship</p>
@@ -580,7 +634,7 @@ and operational information.
 <section id="certifications">
 <div class="wrap">
 <div class="head">
-<div class="eyebrow">06 / Certifications</div>
+<div class="eyebrow">05 / Certifications</div>
 <h2>Professional Certifications</h2>
 </div>
 
@@ -608,7 +662,7 @@ and operational information.
 <section id="skills">
 <div class="wrap">
 <div class="head">
-<div class="eyebrow">07 / Skills</div>
+<div class="eyebrow">06 / Skills</div>
 <h2>Technical Skills & Tools</h2>
 </div>
 
@@ -644,7 +698,7 @@ and operational information.
 <section id="gallery" class="gallery-section">
   <div class="wrap">
     <div class="head gallery-intro">
-      <div class="eyebrow">08 / Work Activity Gallery</div>
+      <div class="eyebrow">07 / Work Activity Gallery</div>
       <h2>Behind the Projects.</h2>
       <p>A visual collection of field activities, system installations, troubleshooting, testing, and technical work.</p>
     </div>
@@ -779,7 +833,7 @@ and operational information.
 <section id="contact">
 <div class="wrap">
 <div class="contact">
-<div class="eyebrow">09 / Contact</div>
+<div class="eyebrow">08 / Contact</div>
 <h2>Let's Connect.</h2>
 <p>
 I'm open to professional opportunities and Technical
